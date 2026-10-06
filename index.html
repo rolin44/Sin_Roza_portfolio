@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio Sin Roza</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0b0f;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(11, 11, 15, 0.85);
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ff4d67;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #aaa;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff4d67;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            padding: 150px 8% 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .hero-text small {
+            color: #ff4d67;
+            font-size: 16px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 7vw, 90px);
+            line-height: 1;
+            margin: 20px 0;
+        }
+
+        .hero h1 span {
+            color: #ff4d67;
+        }
+
+        .hero p {
+            color: #aaa;
+            font-size: 18px;
+            max-width: 550px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 30px;
+            background: #ff4d67;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 77, 103, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #444;
+        }
+
+        .btn-outline:hover {
+            border-color: #ff4d67;
+        }
+
+        /* HERO IMAGE */
+        .hero-image {
+            width: 360px;
+            height: 450px;
+            border-radius: 25px;
+            background: linear-gradient(145deg, #222, #111);
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image::before {
+            content: "";
+            width: 250px;
+            height: 250px;
+            background: #ff4d67;
+            filter: blur(100px);
+            opacity: 0.35;
+            position: absolute;
+        }
+
+        .hero-image-text {
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-image-text .icon {
+            font-size: 80px;
+            margin-bottom: 15px;
+        }
+
+        .hero-image-text h3 {
+            font-size: 25px;
+        }
+
+        /* GENERAL */
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            margin-bottom: 50px;
+        }
+
+        .section-title small {
+            color: #ff4d67;
+            letter-spacing: 3px;
+        }
+
+        .section-title h2 {
+            font-size: 45px;
+            margin-top: 10px;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat {
+            background: #141419;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #25252c;
+        }
+
+        .stat h3 {
+            font-size: 35px;
+            color: #ff4d67;
+        }
+
+        .stat p {
+            color: #888;
+        }
+
+        /* SERVICES */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .service {
+            padding: 35px;
+            background: #141419;
+            border: 1px solid #25252c;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .service:hover {
+            transform: translateY(-8px);
+            border-color: #ff4d67;
+        }
+
+        .service-icon {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .service h3 {
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .service p {
+            color: #888;
+        }
+
+        /* SKILLS */
+        .skills {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .skill {
+            margin-bottom: 25px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .skill-header span:last-child {
+            color: #ff4d67;
+        }
+
+        .bar {
+            height: 8px;
+            background: #222;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .bar span {
+            display: block;
+            height: 100%;
+            background: #ff4d67;
+            border-radius: 20px;
+        }
+
+        /* PROJECTS */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            height: 320px;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #18181e;
+            position: relative;
+            border: 1px solid #292930;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            background: linear-gradient(135deg, #292929, #111);
+        }
+
+        .project-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.95));
+        }
+
+        .project-info h3 {
+            font-size: 22px;
+        }
+
+        .project-info p {
+            color: #aaa;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .contact h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            color: #888;
+            margin-bottom: 35px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 35px;
+        }
+
+        .contact-item {
+            color: #aaa;
+        }
+
+        .contact-item span {
+            color: #ff4d67;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid #222;
+            color: #666;
+        }
+
+        /* MOBILE */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .about,
+            .skills {
+                grid-template-columns: 1fr;
+            }
+
+            .services,
+            .projects {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-image {
+                width: 280px;
+                height: 350px;
+            }
+
+            .services,
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .section-title h2 {
+                font-size: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">SIN ROZA<span>.</span></div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Services</a></li>
+            <li><a href="#services">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+ 
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-text">
+            <small>Creative Designer & Editor</small>
+
+            <h1>
+                I Create <span>Visual</span><br>
+                Experiences.
+            </h1>
+
+            <p>
+                I'm a Video Editor and Graphic Designer creating
+                engaging videos, creative graphics, social media content,
+                and visual experiences that make brands stand out.
+            </p>
+
+            <div class="buttons">
+                <a href="#services" class="btn">View My Projects</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <div class="hero-image-text">
+                <img style="height: 500px; width: 370px;" src="profile.jpg" alt="">
+                
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <div class="section-title">
+            <small>ABOUT ME</small>
+            <h2>Who I Am</h2>
+        </div>
+
+        <div class="about">
+
+            <div class="about-text">
+                <p>
+                    Hello! I'm <strong>ROO</strong>, a creative
+                    Video Editor and Graphic Designer from Cambodia.
+                </p>
+
+                <p>
+                    I enjoy turning ideas into visual content.
+                    My work includes video editing, posters, thumbnails,
+                    social media designs, logos, and promotional content.
+                </p>
+
+                <p>
+                    My goal is simple: create clean, modern and creative
+                    visuals that communicate a strong message.
+                </p>
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <h3>20+</h3>
+                    <p>Projects Completed</p>
+                </div>
+
+                <div class="stat">
+                    <h3>1+</h3>
+                    <p>Years Experience</p>
+                </div>
+
+                <div class="stat">
+                    <h3>15+</h3>
+                    <p>Happy Clients</p>
+                </div>
+
+                <div class="stat">
+                    <h3>100%</h3>
+                    <p>Creative Passion</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+    <section id="services">
+
+        <div class="section-title">
+            <small>WHAT I DO</small>
+            <h2>My Projects</h2>
+            <h3>Click on Box</h3>
+        </div>
+
+        <div class="services">
+
+            <a href="https://t.me/portfolio9000">
+
+            <div class="service">
+                <div class="service-icon">🎬</div>
+                <h3>Video Editing</h3>
+            </div>
+            </a>
+
+
+            <a href="index1.html">
+            <div class="service">
+                <div class="service-icon">🎨</div>
+                <h3>Graphic Design</h3>
+            </div>
+            </a>
+
+           <a href="index2.html">
+            <div class="service">
+                <div class="service-icon">📷</div>
+                <h3>Photography</h3>
+            </div>
+            </a>
+
+            
+
+    </section>
+
+
+    <!-- SKILLS -->
+    <section>
+
+        <div class="section-title">
+            <small>MY EXPERTISE</small>
+            <h2>Software & Skills</h2>
+        </div>
+
+        <div class="skills">
+
+            <div>
+
+                <div class="skill">
+                    <div class="skill-header">
+                        <span>Adobe Premiere Pro</span>
+                        <span>50%</span>
+                    </div>
+
+                    <div class="bar">
+                        <span style="width:50%"></span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-header">
+                        <span>Adobe Photoshop</span>
+                        <span>80%</span>
+                    </div>
+
+                    <div class="bar">
+                        <span style="width:80%"></span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-header">
+                        <span>Adobe After Effects</span>
+                        <span>50%</span>
+                    </div>
+
+                    <div class="bar">
+                        <span style="width:50%"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div>
+
+                <div class="skill">
+                    <div class="skill-header">
+                        <span>Adobe Illustrator</span>
+                        <span>65%</span>
+                    </div>
+
+                    <div class="bar">
+                        <span style="width:65%"></span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-header">
+                        <span>CapCut</span>
+                        <span>80%</span>
+                    </div>
+
+                    <div class="bar">
+                        <span style="width:80%"></span>
+                    </div>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-header">
+                        <span>Canva</span>
+                        <span>75%</span>
+                    </div>
+
+                    <div class="bar">
+                        <span style="width:75%"></span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects">
+
+        <div class="section-title">
+            <small>MY WORK</small>
+            <h2>My service</h2>
+        </div>
+
+        <div class="projects">
+
+            <div class="project">
+                <div class="project-img">🎬</div>
+
+                <div class="project-info">
+                    <h3>Promote Video</h3>
+                    <p>Video Editing</p>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-img">🎨</div>
+
+                <div class="project-info">
+                    <h3>Brand Poster</h3>
+                    <p>Graphic Design</p>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-img">📱</div>
+
+                <div class="project-info">
+                    <h3>Social Media</h3>
+                    <p>Content Design</p>
+                </div>
+            </div>
+
+           
+            <div class="project">
+                <div class="project-img">🖼️</div>
+
+                <div class="project-info">
+                    <h3>Poster Collection</h3>
+                    <p>Graphic Design</p>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-img">▶️</div>
+
+                <div class="project-info">
+                    <h3>Facebook Video</h3>
+                    <p>Video Editing</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact">
+
+        <div class="contact">
+
+            <div class="section-title">
+                <small>GET IN TOUCH</small>
+                <h2>Let's Work Together</h2>
+            </div>
+
+            <p>
+                Have a project in mind? I'm available for video editing,
+                graphic design and creative projects.
+            </p>
+
+            <a href="https://t.me/sinroza" class="btn">
+                Click Contact Me
+            </a>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span> sinroza83@gmail.com
+                </div>
+
+                <div class="contact-item">
+                    <span>📱</span> +855 979 4437 73
+                </div>
+
+                <div class="contact-item">
+                    <span>📍</span> Cambodia
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        @Sin Roza Portfolio 
+    </footer>
+
+</body>
+</html>
